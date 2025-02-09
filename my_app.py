@@ -69,7 +69,7 @@ def get_forecast_data():
     }
 
     # Create CDS API client and download data
-    client = cdsapi.Client()
+    client = cdsapi.Client(url=st.secrets["cdsapi"]["url"],key=st.secrets["cdsapi"]["key"])
     output_file = "forecast.grib"
     client.retrieve("cams-global-atmospheric-composition-forecasts", request).download(output_file)
 
